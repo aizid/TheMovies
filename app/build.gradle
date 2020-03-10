@@ -165,4 +165,3 @@ project.tasks.whenTaskAdded {
         it.enabled = false
     }
 }
-
