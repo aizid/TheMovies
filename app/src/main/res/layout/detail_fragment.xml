@@ -107,11 +107,20 @@
                 android:layout_marginBottom="10dip"
                 android:textStyle="bold"/>
 
+            <TextView
+                android:id="@+id/tv_detail_movie_no_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dip"
+                android:text="No Data Review"
+                android:gravity="center"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_detail_fragment_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                tools:listitem="@layout/layout_item_rcv_review_detail"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </LinearLayout>
