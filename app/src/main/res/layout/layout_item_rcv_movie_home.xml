@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="posthome"
+            type="com.aizidev.themovies.vo.MovieRes" />
+
+        <variable
+            name="constant"
+            type="com.aizidev.themovies.util.ConstantsKt" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_layout_item_rcv_movie_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginBottom="10dip">
+
+        <ImageView
+            android:id="@+id/iv_item_rcv_movie_home"
+            android:layout_width="130dip"
+            android:layout_height="150dip"
+            android:src="@drawable/ic_icon_no_image_s"
+            app:imageFromUrl="@{constant.BASE_URL_IMG + posthome.posterPath}"
+            tools:ignore="VectorDrawableCompat" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_item_rcv_movie_home_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{posthome.title}"
+                android:textSize="@dimen/font_size_14"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_item_rcv_movie_home_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="@{posthome.releaseDate}"
+                android:textSize="@dimen/font_size_10" />
+
+            <TextView
+                android:id="@+id/tv_item_rcv_movie_home_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:ellipsize="middle"
+                android:maxLines="4"
+                android:text="@{posthome.overview}"
+                android:textSize="@dimen/font_size_12" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

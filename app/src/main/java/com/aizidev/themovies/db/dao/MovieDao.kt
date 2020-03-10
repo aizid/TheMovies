@@ -11,14 +11,17 @@ import com.aizidev.themovies.vo.MovieRes
 abstract class MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertPosCodes(postHomeRes: List<MovieRes>)
+    abstract fun insertMovies(postHomeRes: List<MovieRes>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertPosCode(repos: MovieRes)
+    abstract fun insertMovie(repos: MovieRes)
 
     @Query("SELECT * FROM MovieRes")
-    abstract fun loadPostHome(): LiveData<List<MovieRes>>
+    abstract fun loadMovies(): LiveData<List<MovieRes>>
 
-    @Query("SELECT * FROM MovieRes WHERE numberPosCode = :numberPosCode")
-    abstract fun loadPostHomeByNumberPosCode(numberPosCode: String): LiveData<MovieRes>
+    @Query("SELECT * FROM MovieRes WHERE id = :id")
+    abstract fun loadDetailMovies(id: Int): LiveData<MovieRes>
+
+    @Query("SELECT * FROM MovieRes WHERE favorite = :favorite")
+    abstract fun loadFavoriteMovies(favorite: Boolean): LiveData<List<MovieRes>>
 }

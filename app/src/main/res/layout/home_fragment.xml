@@ -7,27 +7,20 @@
 
         <import type="androidx.lifecycle.LiveData" />
 
-        <import type="com.bumptech.glide.request.RequestListener" />
-
-        <import type="android.graphics.drawable.Drawable" />
-
         <variable
             name="retryCallback"
             type="com.aizidev.themovies.ui.common.RetryCallback" />
 
-        <variable
-            name="imageRequestListener"
-            type="com.bumptech.glide.request.RequestListener&lt;Drawable>" />
-
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".ui.home.HomeFragment">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swpl_home_fragment_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -37,18 +30,80 @@
                 android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcv_notification_fragment"
+                    android:id="@+id/rcv_home_fragment_movie"
                     android:layout_width="match_parent"
                     android:layout_height="0dip"
                     android:layout_weight="1"
                     android:orientation="vertical"
+                    android:paddingTop="10dip"
                     android:scrollbars="none"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@+id/include" />
+                    tools:listitem="@layout/layout_item_rcv_movie_home" />
 
+                <Button
+                    android:id="@+id/btn_cat_home_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="CATEGORY"
+                    android:textColor="#ffffff" />
             </LinearLayout>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_cat_home_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tv_cat_popular_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dip"
+                android:text="Popular" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dip"
+                android:background="#d4d4d4" />
+
+            <TextView
+                android:id="@+id/tv_cat_up_coming_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dip"
+                android:text="Upcoming" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dip"
+                android:background="#d4d4d4" />
+
+            <TextView
+                android:id="@+id/tv_cat_top_rated_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dip"
+                android:text="Top Rated" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dip"
+                android:background="#d4d4d4" />
+
+            <TextView
+                android:id="@+id/tv_cat_now_playing_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dip"
+                android:text="Now Playing" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

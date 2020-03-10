@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import com.aizidev.themovies.R
 import com.aizidev.themovies.di.component.Injectable
 import com.aizidev.themovies.util.NavigationControllerMain
-import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
@@ -22,6 +21,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector, Injectable
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        navigationControllerMain.navigateHome()
     }
 
     override fun supportFragmentInjector() = dispatchingAndroidInjector
