@@ -1,13 +1,10 @@
 package com.aizidev.themovies.ui.dialog
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-
 import com.aizidev.themovies.R
 
 class ChooseCategoryFragment : DialogFragment() {
@@ -27,7 +24,7 @@ class ChooseCategoryFragment : DialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ChooseCategoryViewModel::class.java)
+//        viewModel = ViewModelProviders.of(this).get(ChooseCategoryViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

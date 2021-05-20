@@ -2,7 +2,6 @@ package com.aizidev.themovies.di.module
 
 import android.app.Application
 import com.aizidev.themovies.BuildConfig
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
