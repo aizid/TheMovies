@@ -22,7 +22,7 @@ class HomeViewModel
             if (token == null) {
                 AbsentLiveData.create()
             } else {
-                globalRepo.loadMoviewPopularHome(token)
+                globalRepo.loadMoviePopularHome(token, true)
             }
         }
     val upcomingMovie: LiveData<Resource<List<MovieRes>>> = Transformations
@@ -30,7 +30,7 @@ class HomeViewModel
             if (token == null) {
                 AbsentLiveData.create()
             } else {
-                globalRepo.loadMoviewUpcomingHome(token)
+                globalRepo.loadMovieUpcomingHome(token, true)
             }
         }
     val topratedMovie: LiveData<Resource<List<MovieRes>>> = Transformations
@@ -38,7 +38,7 @@ class HomeViewModel
             if (token == null) {
                 AbsentLiveData.create()
             } else {
-                globalRepo.loadMoviewTopRatedHome(token)
+                globalRepo.loadMovieTopRatedHome(token, true)
             }
         }
     val nowplayingMovie: LiveData<Resource<List<MovieRes>>> = Transformations
@@ -46,7 +46,7 @@ class HomeViewModel
             if (token == null) {
                 AbsentLiveData.create()
             } else {
-                globalRepo.loadMoviewNowPlayingHome(token)
+                globalRepo.loadMovieNowPlayingHome(token, true)
             }
         }
 

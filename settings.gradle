@@ -1,2 +1,3 @@
+include ':SearchMovie'
 rootProject.name='The Movies'
 include ':app'

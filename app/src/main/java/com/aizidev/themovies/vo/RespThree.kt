@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName
 data class RespThree(
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:SerializedName("page")
-	val page: Int? = null,
+	val page: Int,
 
 	@field:SerializedName("total_pages")
-	val totalPages: Int? = null,
+	val totalPages: Int,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem?>? = null,
+    var results: List<ReviewRes>,
 
 	@field:SerializedName("total_results")
-	val totalResults: Int? = null
+	val totalResults: Int
 )

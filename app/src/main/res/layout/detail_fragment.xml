@@ -42,7 +42,8 @@
                     android:id="@+id/iv_detail_movie_image"
                     android:layout_width="140dip"
                     android:layout_height="170dip"
-                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dip"
+                    android:layout_gravity="top"
                     android:src="@drawable/ic_icon_no_image_s"
                     app:imageFromUrl="@{constant.BASE_URL_IMG + movieRes.posterPath}"
                     tools:ignore="VectorDrawableCompat" />
@@ -102,9 +103,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Review"
+                android:text="Reviews"
                 android:layout_marginTop="10dip"
                 android:layout_marginBottom="10dip"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="15dip"
+                android:textSize="@dimen/font_size_14"
                 android:textStyle="bold"/>
 
             <TextView

@@ -6,11 +6,13 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.aizidev.themovies.db.dao.MovieDao
+import com.aizidev.themovies.db.dao.ReviewDao
 import com.aizidev.themovies.vo.MovieRes
+import com.aizidev.themovies.vo.ReviewRes
 
 @Database(
     entities = [
-        MovieRes::class],
+        MovieRes::class, ReviewRes::class],
     version = 1,
     exportSchema = false
 )
@@ -19,6 +21,8 @@ import com.aizidev.themovies.vo.MovieRes
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun movieDao(): MovieDao
+
+    abstract fun reviewDao(): ReviewDao
 
     companion object {
         // For Singleton instantion

@@ -11,7 +11,7 @@ data class RespOne(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<MovieRes>,
+	var results: List<MovieRes>,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null

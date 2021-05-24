@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import com.aizidev.themovies.di.component.AppInjector
 import com.aizidev.themovies.util.CrashReportingTree
+import com.google.android.play.core.splitcompat.SplitCompat
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import timber.log.Timber
@@ -15,6 +16,7 @@ class TheMovies : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
+        SplitCompat.install(this)
 
 //        if (BuildConfig.DEBUG) Stetho.initializeWithDefaults(this)
 

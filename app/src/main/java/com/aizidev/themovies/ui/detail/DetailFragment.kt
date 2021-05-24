@@ -39,10 +39,19 @@ class DetailFragment : Fragment(), Injectable, MainActivity.OnBackPressedListner
     private var adapter by autoCleared<AdapterDetailReview>()
 
     private var idMovie: Int = 0
+    private var popular: Boolean = false
+    private var upcoming: Boolean = false
+    private var topRated: Boolean = false
+    private var nowPlaying: Boolean = false
 
-    fun newInstance(id: Int): DetailFragment {
+    fun newInstance(id: Int, popular: Boolean, upcoming: Boolean,
+                    topRated: Boolean, nowPlaying: Boolean): DetailFragment {
         val detailFragment = DetailFragment()
         detailFragment.idMovie = id
+        detailFragment.popular = popular
+        detailFragment.upcoming = upcoming
+        detailFragment.topRated = topRated
+        detailFragment.nowPlaying = nowPlaying
         return detailFragment
     }
 
@@ -63,21 +72,20 @@ class DetailFragment : Fragment(), Injectable, MainActivity.OnBackPressedListner
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        initAdapter()
         initComponent()
         initData()
-        initRequestData()
-    }
-
-    private fun initRequestData() {
-        detailViewModel.setMemberAcc(KEY_PREFF_TOKEN, idMovie)
+        initContributorList(detailViewModel)
     }
 
     private fun initData() {
-        detailViewModel.memberAcc.observe(viewLifecycleOwner, Observer { result ->
-            if (result?.data != null) {
-                binding.movieRes = result.data
-            }
-        })
+        detailViewModel.setToken(KEY_PREFF_TOKEN)
+        detailViewModel.setMovieId(idMovie)
+        detailViewModel.setPopular(popular)
+        detailViewModel.setUpcoming(upcoming)
+        detailViewModel.setNowPlaying(nowPlaying)
+        detailViewModel.setTopRated(topRated)
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     private fun initAdapter() {
@@ -89,17 +97,27 @@ class DetailFragment : Fragment(), Injectable, MainActivity.OnBackPressedListner
     }
 
     private fun initContributorList(viewModel: DetailViewModel) {
-//        viewModel..observe(viewLifecycleOwner, Observer { listResource ->
-//            if (listResource?.data != null) {
-//                adapter.submitList(listResource.data)
-//            } else {
-//                adapter.submitList(emptyList())
-//            }
-//        })
+        detailViewModel.movieDetail.observe(viewLifecycleOwner, Observer { result ->
+            if (result?.data != null) {
+                binding.movieRes = result.data
+            }
+        })
+
+        viewModel.reviewMovie.observe(viewLifecycleOwner, Observer { listResource ->
+            if (listResource?.data != null && listResource.data.isNotEmpty()) {
+                binding.tvDetailMovieNoData.visibility = View.GONE
+                adapter.submitList(listResource.data)
+            } else {
+                binding.tvDetailMovieNoData.visibility = View.VISIBLE
+                adapter.submitList(emptyList())
+            }
+        })
     }
 
     private fun initComponent() {
+        binding.ivDetailMovieFavorite.setOnClickListener {
 
+        }
     }
 
     override fun onBackPressed(): Boolean {

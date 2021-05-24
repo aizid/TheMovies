@@ -9,20 +9,20 @@ import com.aizidev.themovies.AppExecutors
 import com.aizidev.themovies.R
 import com.aizidev.themovies.databinding.LayoutItemRcvReviewDetailBinding
 import com.aizidev.themovies.ui.common.DataBoundListAdapter
-import com.aizidev.themovies.vo.ResultsItem
+import com.aizidev.themovies.vo.ReviewRes
 
 class AdapterDetailReview(
     private val dataBindingComponent: DataBindingComponent,
     appExecutors: AppExecutors,
-    private val clickCallback: ((ResultsItem) -> Unit)?
-) : DataBoundListAdapter<ResultsItem, LayoutItemRcvReviewDetailBinding>(
+    private val clickCallback: ((ReviewRes) -> Unit)?
+) : DataBoundListAdapter<ReviewRes, LayoutItemRcvReviewDetailBinding>(
     appExecutors = appExecutors,
-    diffCallback = object : DiffUtil.ItemCallback<ResultsItem>() {
-        override fun areItemsTheSame(oldItem: ResultsItem, newItem: ResultsItem): Boolean {
+    diffCallback = object : DiffUtil.ItemCallback<ReviewRes>() {
+        override fun areItemsTheSame(oldItem: ReviewRes, newItem: ReviewRes): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: ResultsItem, newItem: ResultsItem): Boolean {
+        override fun areContentsTheSame(oldItem: ReviewRes, newItem: ReviewRes): Boolean {
             return oldItem.author == newItem.author
                     && oldItem.content == newItem.content
         }
@@ -33,7 +33,7 @@ class AdapterDetailReview(
         val binding = DataBindingUtil
             .inflate<LayoutItemRcvReviewDetailBinding>(
                 LayoutInflater.from(parent.context),
-                R.layout.layout_item_rcv_movie_home,
+                R.layout.layout_item_rcv_review_detail,
                 parent,
                 false,
                 dataBindingComponent
@@ -47,7 +47,7 @@ class AdapterDetailReview(
         return binding
     }
 
-    override fun bind(binding: LayoutItemRcvReviewDetailBinding, item: ResultsItem) {
+    override fun bind(binding: LayoutItemRcvReviewDetailBinding, item: ReviewRes) {
         binding.resultsItem = item
     }
 }

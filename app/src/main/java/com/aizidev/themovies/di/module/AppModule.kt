@@ -4,6 +4,7 @@ import android.app.Application
 import com.aizidev.themovies.api.ApiService
 import com.aizidev.themovies.db.AppDatabase
 import com.aizidev.themovies.db.dao.MovieDao
+import com.aizidev.themovies.db.dao.ReviewDao
 import com.aizidev.themovies.util.BASE_URL
 import com.aizidev.themovies.util.LiveDataCallAdapterFactory
 import dagger.Module
@@ -55,7 +56,13 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideUserDao(db: AppDatabase): MovieDao {
+    fun provideMovieDao(db: AppDatabase): MovieDao {
         return db.movieDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideReviewDao(db: AppDatabase): ReviewDao {
+        return db.reviewDao()
     }
 }

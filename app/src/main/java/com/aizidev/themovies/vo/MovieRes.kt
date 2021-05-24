@@ -9,14 +9,26 @@ import com.google.gson.annotations.SerializedName
 @TypeConverters(Converters::class)
 data class MovieRes(
 
+    @field:SerializedName("popular")
+    var popular: Boolean,
+
+    @field:SerializedName("upcoming")
+    var upcoming: Boolean,
+
+    @field:SerializedName("top_rated")
+    var topRated: Boolean,
+
+    @field:SerializedName("now_playing")
+    var nowPlaying: Boolean,
+
     @field:SerializedName("overview")
-    val overview: String,
+    val overview: String?,
 
     @field:SerializedName("original_language")
-    val originalLanguage: String,
+    val originalLanguage: String?,
 
     @field:SerializedName("original_title")
-    val originalTitle: String,
+    val originalTitle: String?,
 
     @field:SerializedName("video")
     val video: Boolean,
@@ -28,13 +40,13 @@ data class MovieRes(
     val genreIds: List<Int>,
 
     @field:SerializedName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
 
     @field:SerializedName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
 
     @field:SerializedName("release_date")
-    val releaseDate: String,
+    val releaseDate: String?,
 
     @field:SerializedName("popularity")
     val popularity: Double,

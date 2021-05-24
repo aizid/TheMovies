@@ -1,12 +1,14 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 
-apply plugin: 'kotlin-allopen'
-apply plugin: 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-allopen'
+    id 'androidx.navigation.safeargs.kotlin'
 
-apply plugin: 'jacoco' //Unit Tester
+    id 'jacoco' //Unit Tester
+}
 
 allOpen {
     // allows mocking for classes w/o directly opening them for release builds
@@ -46,6 +48,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    // Dymanic Fiture
+    dynamicFeatures = [':SearchMovie']
 }
 
 jacoco {
@@ -62,6 +67,7 @@ dependencies {
     implementation deps.core_ktx
     implementation deps.transition
     implementation deps.play_services_location
+    implementation deps.play_core
     implementation deps.viewpager2
     implementation deps.swiperefresh
     implementation deps.picasso
@@ -86,6 +92,8 @@ dependencies {
     implementation deps.kotlin.stdlib
 
     implementation deps.timber
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
 
     kapt deps.dagger.android_support_compiler
     kapt deps.dagger.compiler

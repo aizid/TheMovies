@@ -8,16 +8,20 @@ object Converters {
     @TypeConverter
     @JvmStatic
     fun stringToIntList(data: String?): List<Int>? {
-        return data?.let { it ->
-            it.split(",").map {
-                try {
-                    it.toInt()
-                } catch (ex: NumberFormatException) {
-                    Timber.e(ex, "Cannot convert $it to number")
-                    null
+        return if (data != null || data?.length != 0) {
+            listOf()
+        } else {
+            data?.let { it ->
+                it.split(",").map {
+                    try {
+                        it.toInt()
+                    } catch (ex: NumberFormatException) {
+                        Timber.e(ex, "Cannot convert $it to number")
+                        null
+                    }
                 }
-            }
-        }?.filterNotNull()
+            }?.filterNotNull()
+        }
     }
 
     @TypeConverter
